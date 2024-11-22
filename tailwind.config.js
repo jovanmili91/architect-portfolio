@@ -1,7 +1,17 @@
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"], // Paths to your files
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {}, // Extend your custom styles here if needed
+    extend: {
+      animation: {
+        "fade-in": "fadeIn 1s ease-in forwards",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
+    },
   },
   plugins: [require("tailwindcss-animate")],
 };
