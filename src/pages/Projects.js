@@ -5,30 +5,29 @@ import { Helmet } from "react-helmet-async";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         console.log("Fetching projects from Firestore...");
         const querySnapshot = await getDocs(collection(db, "projects"));
-        console.log("Raw QuerySnapshot:", querySnapshot);
 
         const projectList = querySnapshot.docs.map((doc) => {
           const data = doc.data();
-          console.log(`Project ID: ${doc.id}`, data); // Log each project's data
+          console.log(`Project ID: ${doc.id}`, data);
+
           return {
             id: doc.id,
-            title: data.title || "No Title", // Provide default if title is missing
-            description: data.description || "No Description",
-            imageURL: data.imageURL || "",
-            // Add other fields as necessary
+            title: data.title ?? "No Title", // Use nullish coalescing
+            description: data.description ?? "No Description",
+            imageURL: data.imageURL ?? "",
           };
         });
 
-        console.log("Processed Project List:", projectList);
-        setProjects(projectList);
+        console.log("Final Project List:", projectList);
+        setProjects(projectList); // Update state with fetched projects
       } catch (err) {
         console.error("Error fetching projects:", err);
         setError("Failed to load projects. Please try again later.");
@@ -50,7 +49,6 @@ const Projects = () => {
 
   return (
     <div>
-      {console.log("Projects before rendering:", projects)} {/* Debug here */}
       <Helmet>
         <title>Projects - Architect Portfolio</title>
         <meta
@@ -72,7 +70,7 @@ const Projects = () => {
                 <img
                   src={project.imageURL}
                   alt={project.title}
-                  style={{ width: "100%", height: "auto" }} // Optional styling
+                  style={{ width: "100%", height: "auto" }}
                 />
               ) : (
                 <p>No image available.</p>
