@@ -3,9 +3,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaUsers, FaLightbulb, FaAward } from "react-icons/fa";
-import { Parallax } from "react-parallax"; // Import Parallax
-import aboutImage from "../assets/about-image.jpg"; // Ensure you have an appropriate image
-import parallaxImage from "../assets/parallax-image.jpg"; // Ensure you have a parallax image
+import { Parallax } from "react-parallax";
+import aboutImage from "../assets/about-image.jpg";
+import parallaxImage from "../assets/parallax-image.jpg";
 import { Helmet } from "react-helmet-async";
 
 const About = () => {
@@ -51,7 +51,7 @@ const About = () => {
       </div>
 
       {/* Content Section */}
-      <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+      <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
         {/* Image */}
         <motion.div
           className="w-full"
@@ -63,8 +63,8 @@ const About = () => {
           <img
             src={aboutImage}
             alt="About Us"
-            className="w-full h-64 sm:h-80 md:h-96 lg:h-auto object-cover rounded-lg shadow-lg"
-            loading="lazy" // Lazy load the image for better performance
+            className="w-full h-80 sm:h-96 md:h-full object-cover rounded-lg shadow-lg"
+            loading="lazy"
           />
         </motion.div>
 
@@ -154,7 +154,7 @@ const About = () => {
       {/* Parallax Section */}
       <Parallax bgImage={parallaxImage} strength={500}>
         <div style={{ height: 400 }}>
-          <div className="flex items-center justify-center h-full">
+          <div className="flex items-center justify-center h-full bg-black bg-opacity-50">
             <h2 className="text-5xl font-bold text-white text-center px-4">
               Our Commitment to Excellence
             </h2>
@@ -164,28 +164,31 @@ const About = () => {
 
       {/* Video Introduction Section */}
       <section className="py-16 bg-gray-100">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.h3
-            className="text-3xl font-bold text-gray-800 mb-6"
+            className="text-3xl font-bold text-gray-800 text-center mb-8"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
           >
             Our Journey
           </motion.h3>
-          <motion.video
-            className="w-full rounded-lg shadow-lg"
-            controls
+          <motion.div
+            className="w-full rounded-lg shadow-lg overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
+            style={{ height: "600px" }} // Set a taller fixed height
           >
-            <source
-              src="https://www.w3schools.com/html/mov_bbb.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </motion.video>
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/38vK64FNbBI?vq=hd1080"
+              title="Our Journey"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </motion.div>
         </div>
       </section>
 
