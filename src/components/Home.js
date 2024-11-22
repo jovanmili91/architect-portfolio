@@ -1,33 +1,35 @@
 // Home.js
 import React, { useEffect, useState } from "react";
-import { FaProjectDiagram, FaHandshake, FaLeaf } from "react-icons/fa"; // Added FaLeaf for sustainability
+import { FaProjectDiagram, FaHandshake, FaLeaf } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Parallax } from "react-parallax";
 import { Helmet } from "react-helmet-async";
-import { db } from "../firebaseConfig"; // Import Firebase Firestore
+import { db } from "../firebaseConfig";
 import { collection, query, limit, getDocs } from "firebase/firestore";
-import heroImage from "../assets/hero-image.jpg"; // Ensure you have this image in your assets
-import parallaxImage from "../assets/parallax-image.jpg"; // Add a relevant image
+import heroImage from "../assets/hero-image.jpg";
+import parallaxImage from "../assets/parallax-image.jpg";
 import FeatureCard from "./FeatureCard";
 import { useNavigate } from "react-router-dom";
+import { useWindowWidth } from "@react-hook/window-size";
 
 const Home = () => {
   const [latestProjects, setLatestProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const windowWidth = useWindowWidth();
 
   useEffect(() => {
     const fetchLatestProjects = async () => {
       try {
         const projectsRef = collection(db, "projects");
-        const q = query(projectsRef, limit(3)); // Remove the orderBy clause
+        const q = query(projectsRef, limit(3));
         const querySnapshot = await getDocs(q);
 
-        console.log("Query Snapshot:", querySnapshot.size); // Log the size of results
+        console.log("Query Snapshot:", querySnapshot.size);
 
         const projectsList = querySnapshot.docs.map((doc) => {
-          console.log("Project Data:", doc.data()); // Log each project's data
+          console.log("Project Data:", doc.data());
           const data = doc.data();
           return {
             id: doc.id,
@@ -71,7 +73,7 @@ const Home = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
           <motion.h1
-            className="text-5xl md:text-6xl font-extrabold mb-6"
+            className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-6"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
@@ -79,7 +81,7 @@ const Home = () => {
             Welcome to Architect Portfolio
           </motion.h1>
           <motion.p
-            className="text-lg md:text-2xl mb-8"
+            className="text-base sm:text-lg md:text-2xl mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
@@ -99,7 +101,7 @@ const Home = () => {
       {/* Portfolio Preview Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-12">
             Our Portfolio
           </h2>
 
@@ -110,7 +112,7 @@ const Home = () => {
           ) : error ? (
             <p className="text-center text-red-500">{error}</p>
           ) : (
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               {latestProjects.map((project) => (
                 <motion.div
                   key={project.id}
@@ -123,11 +125,11 @@ const Home = () => {
                     <img
                       src={project.imageURL}
                       alt={project.title}
-                      className="w-full h-64 object-cover"
+                      className="w-full h-64 sm:h-48 md:h-64 object-cover"
                       loading="lazy"
                     />
                   ) : (
-                    <div className="w-full h-64 bg-gray-300 flex items-center justify-center">
+                    <div className="w-full h-64 sm:h-48 md:h-64 bg-gray-300 flex items-center justify-center">
                       <p className="text-gray-600">No image available</p>
                     </div>
                   )}
@@ -156,10 +158,23 @@ const Home = () => {
       </section>
 
       {/* Parallax Section */}
-      <Parallax bgImage={parallaxImage} strength={500}>
-        <section className="h-96 flex items-center justify-center">
+      {windowWidth >= 640 ? (
+        <Parallax bgImage={parallaxImage} strength={500}>
+          <section className="h-96 flex items-center justify-center">
+            <motion.h2
+              className="text-4xl md:text-5xl text-white font-bold bg-black bg-opacity-50 px-4 py-2 rounded"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+            >
+              Crafting Spaces with Precision and Passion
+            </motion.h2>
+          </section>
+        </Parallax>
+      ) : (
+        <section className="h-64 flex items-center justify-center bg-gray-800">
           <motion.h2
-            className="text-4xl md:text-5xl text-white font-bold bg-black bg-opacity-50 px-4 py-2 rounded"
+            className="text-2xl sm:text-4xl text-white font-bold px-4 py-2 rounded"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
@@ -167,7 +182,7 @@ const Home = () => {
             Crafting Spaces with Precision and Passion
           </motion.h2>
         </section>
-      </Parallax>
+      )}
 
       {/* Introduction Section */}
       <section className="py-16 bg-gray-100">
@@ -192,7 +207,7 @@ const Home = () => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
               About Our Work
             </h2>
             <p className="text-gray-600 leading-relaxed mb-6">
@@ -215,10 +230,10 @@ const Home = () => {
       {/* Features Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-12">
             Our Services
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             <FeatureCard
               Icon={FaProjectDiagram}
               title="Innovative Design"
@@ -241,7 +256,7 @@ const Home = () => {
       {/* Call to Action */}
       <section className="bg-blue-500 text-white py-12">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
             Ready to Start Your Project?
           </h2>
           <p className="mb-6">
@@ -260,10 +275,10 @@ const Home = () => {
       {/* Testimonials Section */}
       <section className="py-16 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-12">
             What Our Clients Say
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {/* Testimonial 1 */}
             <motion.div
               className="bg-white p-6 rounded-lg shadow-md"

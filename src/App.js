@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer"; // Import Footer
 import BackToTop from "./components/BackToTop"; // Import BackToTop
+import ScrollToTop from "./components/ScrollToTop"; // Import ScrollToTop
 import Home from "./components/Home";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail"; // Import ProjectDetail
@@ -15,6 +16,7 @@ import NotFound from "./components/NotFound";
 const App = () => {
   return (
     <Router>
+      <ScrollToTop /> {/* Add ScrollToTop here */}
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <div className="flex-grow pt-16">

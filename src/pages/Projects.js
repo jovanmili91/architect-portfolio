@@ -1,3 +1,4 @@
+// Projects.js
 import React, { useEffect, useState } from "react";
 import { db } from "../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
@@ -57,7 +58,9 @@ const Projects = () => {
         {/* Add other meta tags as needed */}
       </Helmet>
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-8">Our Projects</h1>
+        <h1 className="text-2xl sm:text-4xl font-bold text-center mb-8">
+          Our Projects
+        </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {projects.map((project) => (
             <motion.div
@@ -73,20 +76,20 @@ const Projects = () => {
                 <img
                   src={project.imageURL}
                   alt={project.title}
-                  className="w-full h-56 object-cover cursor-pointer"
+                  className="w-full h-56 sm:h-48 object-cover cursor-pointer"
                   loading="lazy"
                   onClick={() => handleProjectClick(project.id)}
                 />
               ) : (
                 <div
-                  className="w-full h-56 bg-gray-300 flex items-center justify-center cursor-pointer"
+                  className="w-full h-56 sm:h-48 bg-gray-300 flex items-center justify-center cursor-pointer"
                   onClick={() => handleProjectClick(project.id)}
                 >
                   <p className="text-gray-600">No image available</p>
                 </div>
               )}
               <div className="p-6">
-                <h2 className="text-2xl font-semibold text-gray-800 mb-3">
+                <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-3">
                   {project.title}
                 </h2>
                 <p className="text-gray-600 text-sm mb-4">
