@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Projects from './pages/Projects';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Welcome to Architect Portfolio</h1>
+        <p>Explore our latest architectural projects and designs.</p>
       </header>
+      <main>
+        <Projects />
+        <section>
+          <h2>Our Projects</h2>
+          {/* Ovdje možeš dodati galeriju projekata ili linkove do stranica */}
+        </section>
+      </main>
     </div>
   );
 }

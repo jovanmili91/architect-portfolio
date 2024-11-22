@@ -10,12 +10,20 @@ const Projects = () => {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const querySnapshot = await getDocs(collection(db, 'projects'));
-      const projectsData = querySnapshot.docs.map(doc => doc.data());
-      setProjects(projectsData);
+      const querySnapshot = await getDocs(collection(db, "projects"));
+      const projectList = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      console.log("Fetched Project List:", projectList); // Log fetched data
+      setProjects(projectList);
+      console.log("Projects State After Set:", projectList); // Log state immediately
     };
+  
     fetchProjects();
   }, []);
+  
+  
 
   return (
     <div>
@@ -25,14 +33,20 @@ const Projects = () => {
         <meta name="description" content="Discover our architectural projects, including detailed plans and high-quality images. Our portfolio showcases a variety of creative and innovative designs." />
         <meta name="keywords" content="architecture, projects, house designs, building plans, architect portfolio" />
       </Helmet>
-      {projects.map(project => (
-        <div key={project.id}>
-          <img src={project.imageURL} alt={project.title} />
-          <h2>{project.title}</h2>
-          <p>{project.description}</p>
-          {/* Link to detailed plans if available */}
-        </div>
-      ))}
+      <div>
+      {projects.map((project, index) => {
+  console.log(`Project ${index}:`, project);
+  return (
+    <div key={project.id}>
+      <h2>{project.title || "Untitled Project"}</h2>
+      <p>{project.description || "No description available"}</p>
+      <img src={project.imageURL || "/placeholder-image.jpg"} alt={project.title || "Untitled"} />
+    </div>
+  );
+})}
+
+</div>
+
       <h1>Our Projects</h1>
     </div>
   );
