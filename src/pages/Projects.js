@@ -13,21 +13,22 @@ const Projects = () => {
       try {
         console.log("Fetching projects from Firestore...");
         const querySnapshot = await getDocs(collection(db, "projects"));
+        console.log("Raw QuerySnapshot:", querySnapshot);
 
         const projectList = querySnapshot.docs.map((doc) => {
           const data = doc.data();
-          console.log(`Project ID: ${doc.id}`, data);
-
           return {
             id: doc.id,
-            title: data.title ?? "No Title", // Use nullish coalescing
-            description: data.description ?? "No Description",
-            imageURL: data.imageURL ?? "",
+            title:
+              data.title && data.title.trim() ? data.title.trim() : "No Title",
+            description: data.description || "No Description",
+            imageURL: data.imageURL || "",
           };
         });
 
-        console.log("Final Project List:", projectList);
-        setProjects(projectList); // Update state with fetched projects
+        console.log("Final Project List for Rendering:", projectList);
+        setProjects(projectList);
+        console.log("Updated Projects State:", projectList);
       } catch (err) {
         console.error("Error fetching projects:", err);
         setError("Failed to load projects. Please try again later.");
