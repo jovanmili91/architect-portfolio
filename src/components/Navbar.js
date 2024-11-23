@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Zatvoriti meni kada se prozor promeni veličinu na desktop
+  // Close the menu when window is resized to desktop size
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768 && isOpen) {
@@ -54,9 +54,9 @@ const Navbar = () => {
           </Link>
         </div>
         <button
-          className="md:hidden text-gray-700 focus:outline-none z-60" // Sada je z-60 definisano
+          className="md:hidden text-gray-700 focus:outline-none z-50" // Changed to z-50
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? "Zatvori meni" : "Otvori meni"} // Labela za pristupačnost
+          aria-label={isOpen ? "Zatvori meni" : "Otvori meni"}
         >
           <svg
             className="w-6 h-6"
@@ -85,10 +85,11 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-[rgba(255,255,255,0.6)] backdrop-blur-md shadow-lg animate-fade-in z-40 flex flex-col items-center justify-center space-y-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-[rgba(255,255,255,0.95)] backdrop-blur-md shadow-lg z-40 flex flex-col items-center justify-center space-y-4"
           >
             <Link
               to="/"
