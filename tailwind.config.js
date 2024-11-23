@@ -6,9 +6,6 @@ module.exports = {
       zIndex: {
         60: "60",
         70: "70",
-        80: "80",
-        90: "90",
-        100: "100",
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in forwards", // Duration set to 0.5s

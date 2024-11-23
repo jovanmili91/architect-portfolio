@@ -89,39 +89,39 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-[rgba(255,255,255,0.95)] backdrop-blur-md shadow-lg z-40 flex flex-col items-center justify-center space-y-4"
+            className="fixed inset-0 bg-[rgba(255,255,255,0.50)] backdrop-blur-md shadow-lg z-40 flex flex-col items-center justify-center space-y-4"
           >
             <Link
               to="/"
-              className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
+              className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
               onClick={() => setIsOpen(false)}
             >
               Početna
             </Link>
             <Link
               to="/projekti-kuce"
-              className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
+              className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
               onClick={() => setIsOpen(false)}
             >
               Projekti Kuća
             </Link>
             <Link
               to="/blog"
-              className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
+              className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
               onClick={() => setIsOpen(false)}
             >
               Blog
             </Link>
             <Link
               to="/o-nama"
-              className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
+              className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
               onClick={() => setIsOpen(false)}
             >
               O Nama
             </Link>
             <Link
               to="/kontakt"
-              className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
+              className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
               onClick={() => setIsOpen(false)}
             >
               Kontakt
