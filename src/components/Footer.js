@@ -24,10 +24,11 @@ const Footer = () => {
             O Nama
           </h3>
           <p className="text-gray-400">
-            U Portfolio Arhitekta, specijalizovani smo za kreiranje inovativnih
-            arhitektonskih dizajna koji kombinuju estetiku sa funkcionalnošću.
-            Naš iskusni tim arhitekata posvećen je pružanju održivih i modernih
-            struktura prilagođenih vašoj jedinstvenoj viziji.
+            Arhitektonski biro, specijalizovani smo za kreiranje inovativnih
+            arhitektonskih dizajna, projekata kuća koji kombinuju estetiku sa
+            funkcionalnošću. Naš iskusni tim arhitekata posvećen je pružanju
+            održivih i modernih struktura prilagođenih vašoj jedinstvenoj
+            viziji.
           </p>
         </section>
 

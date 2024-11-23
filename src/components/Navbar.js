@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Close the menu when window is resized to desktop size
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768 && isOpen) {
@@ -22,7 +21,10 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full bg-white shadow z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold text-blue-500">
-          Projekti Kuća - Portfolio Projekata kuća
+          <span className="block md:hidden">Projekti Kuća</span>
+          <span className="hidden md:block">
+            Projekti Kuća - Portfolio Projekata kuća
+          </span>
         </Link>
         <div className="hidden md:flex space-x-6">
           <Link to="/" className="text-lg text-gray-700 hover:text-blue-500">
@@ -54,7 +56,7 @@ const Navbar = () => {
           </Link>
         </div>
         <button
-          className="md:hidden text-gray-700 focus:outline-none z-50" // Changed to z-50
+          className="md:hidden text-gray-700 focus:outline-none z-50"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Zatvori meni" : "Otvori meni"}
         >
@@ -85,47 +87,50 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            onClick={() => setIsOpen(false)}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-[rgba(255,255,255,0.40)] backdrop-blur-md shadow-lg z-40 flex flex-col items-center justify-center space-y-4"
+            className="fixed inset-0 bg-[rgba(255,255,255,0.40)] backdrop-blur-md shadow-lg z-60 flex flex-col items-center justify-center space-y-4"
           >
-            <Link
-              to="/"
-              className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
-              onClick={() => setIsOpen(false)}
-            >
-              Početna
-            </Link>
-            <Link
-              to="/projekti-kuce"
-              className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
-              onClick={() => setIsOpen(false)}
-            >
-              Projekti Kuća
-            </Link>
-            <Link
-              to="/blog"
-              className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
-              onClick={() => setIsOpen(false)}
-            >
-              Blog
-            </Link>
-            <Link
-              to="/o-nama"
-              className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
-              onClick={() => setIsOpen(false)}
-            >
-              O Nama
-            </Link>
-            <Link
-              to="/kontakt"
-              className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
-              onClick={() => setIsOpen(false)}
-            >
-              Kontakt
-            </Link>
+            <div onClick={(e) => e.stopPropagation()}>
+              <Link
+                to="/"
+                className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 text-center"
+                onClick={() => setIsOpen(false)}
+              >
+                Početna
+              </Link>
+              <Link
+                to="/projekti-kuce"
+                className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 text-center"
+                onClick={() => setIsOpen(false)}
+              >
+                Projekti Kuća
+              </Link>
+              <Link
+                to="/blog"
+                className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 text-center"
+                onClick={() => setIsOpen(false)}
+              >
+                Blog
+              </Link>
+              <Link
+                to="/o-nama"
+                className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 text-center"
+                onClick={() => setIsOpen(false)}
+              >
+                O Nama
+              </Link>
+              <Link
+                to="/kontakt"
+                className="block px-5 py-2 text-lg text-gray-700 hover:bg-gray-100 text-center"
+                onClick={() => setIsOpen(false)}
+              >
+                Kontakt
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
