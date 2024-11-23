@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   FaFacebookF,
@@ -12,12 +12,11 @@ import {
 import { motion } from "framer-motion";
 
 const Footer = () => {
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const navigate = useNavigate();
+  const [email, setEmail] = useState(""); // Add state for controlled input
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const email = e.target.elements["email"].value;
-
     try {
       const response = await fetch(
         "https://subscribe-f52ied62eq-uc.a.run.app",
@@ -187,7 +186,7 @@ const Footer = () => {
             Pretplatite se na naš newsletter kako biste primali najnovije
             informacije i ekskluzivne ponude.
           </p>
-          <form className="flex" onSubmit={handleSubmit}>
+          <div className="flex">
             <label htmlFor="newsletter-email" className="sr-only">
               Email Adresa
             </label>
@@ -197,15 +196,18 @@ const Footer = () => {
               name="email"
               placeholder="Vaš email"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} // Controlled input
               className="px-4 py-2 rounded-l-md bg-gray-700 text-white focus:outline-none"
             />
             <button
-              type="submit"
+              type="button" // Change type to "button"
+              onClick={handleSubmit} // Attach event handler here
               className="px-4 py-2 bg-blue-600 rounded-r-md hover:bg-blue-700 transition-colors duration-300"
             >
               Pretplati se
             </button>
-          </form>
+          </div>
         </section>
       </div>
 
