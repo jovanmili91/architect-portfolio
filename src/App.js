@@ -1,5 +1,3 @@
-// src/App.js
-
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -34,12 +32,11 @@ const App = () => {
             <Route path="/blog" element={<Blog />} /> {/* Dodaj Blog rutu */}
             <Route path="/blog/:id" element={<BlogDetail />} />{" "}
             {/* Dodaj BlogDetail rutu */}
-            <Route path="*" element={<NotFound />} />
-            {/* Dodaj ostale rute po potrebi */}
             <Route
               path="/subscription-success"
-              component={SubscriptionSuccess}
+              element={<SubscriptionSuccess />}
             />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer /> {/* Dodaj Footer ovde */}

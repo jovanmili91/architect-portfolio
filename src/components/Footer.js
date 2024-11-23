@@ -1,8 +1,5 @@
-// src/components/Footer.js
-
 import React from "react";
-import { Link } from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaTwitter,
@@ -10,15 +7,45 @@ import {
   FaLinkedinIn,
   FaEnvelope,
   FaPhoneAlt,
-  FaMapMarkerAlt, // Dodato za ikonu adrese
+  FaMapMarkerAlt,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Footer = () => {
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const email = e.target.elements["email"].value;
+
+    try {
+      const response = await fetch(
+        "https://subscribe-f52ied62eq-uc.a.run.app",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      if (response.ok) {
+        navigate("/subscription-success"); // Redirect using useNavigate
+      } else {
+        console.error("Subscription failed");
+        alert("Failed to subscribe. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong. Please try again later.");
+    }
+  };
+
   return (
     <footer className="bg-gray-800 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
-        {/* Sekcija O Nama */}
+        {/* About Section */}
         <section aria-labelledby="footer-about">
           <h3 id="footer-about" className="text-xl font-semibold mb-4">
             O Nama
@@ -32,7 +59,7 @@ const Footer = () => {
           </p>
         </section>
 
-        {/* Sekcija Brzi Linkovi */}
+        {/* Quick Links Section */}
         <nav aria-labelledby="footer-navigation">
           <h3 id="footer-navigation" className="text-xl font-semibold mb-4">
             Brzi Linkovi
@@ -81,7 +108,7 @@ const Footer = () => {
           </ul>
         </nav>
 
-        {/* Sekcija Kontakt Informacije */}
+        {/* Contact Section */}
         <section aria-labelledby="footer-contact">
           <h3 id="footer-contact" className="text-xl font-semibold mb-4">
             Kontaktirajte Nas
@@ -151,7 +178,7 @@ const Footer = () => {
           </address>
         </section>
 
-        {/* Sekcija Pretplate na Newsletter */}
+        {/* Newsletter Section */}
         <section aria-labelledby="footer-newsletter">
           <h3 id="footer-newsletter" className="text-xl font-semibold mb-4">
             Newsletter
@@ -160,11 +187,7 @@ const Footer = () => {
             Pretplatite se na naš newsletter kako biste primali najnovije
             informacije i ekskluzivne ponude.
           </p>
-          <form
-            className="flex"
-            action="https://subscribe-f52ied62eq-uc.a.run.app"
-            method="POST"
-          >
+          <form className="flex" onSubmit={handleSubmit}>
             <label htmlFor="newsletter-email" className="sr-only">
               Email Adresa
             </label>
@@ -186,41 +209,11 @@ const Footer = () => {
         </section>
       </div>
 
-      {/* Donji Deo Footera sa Strukturiranim Podacima */}
+      {/* Footer Bottom Section */}
       <div className="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500">
         &copy; {new Date().getFullYear()} Projekti Kuća Arhitekta. Sva prava
         zadržana.
       </div>
-
-      {/* Strukturirani Podaci za SEO */}
-      <script type="application/ld+json">
-        {`
-          {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Portfolio Arhitekta",
-            "image": "https://www.portfolioarhitekta.com/logo.png",
-            "@id": "",
-            "url": "https://www.portfolioarhitekta.com",
-            "telephone": "+381-62-277-686",
-            "email": "info@portfolioarhitekta.com",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Ulica Arhitekta 123",
-              "addressLocality": "Dizajn Grad",
-              "addressRegion": "SRB",
-              "postalCode": "11000",
-              "addressCountry": "RS"
-            },
-            "sameAs": [
-              "https://www.facebook.com/portfolioarhitekta",
-              "https://www.twitter.com/portfolioarhitekta",
-              "https://www.instagram.com/portfolioarhitekta",
-              "https://www.linkedin.com/company/portfolioarhitekta"
-            ]
-          }
-        `}
-      </script>
     </footer>
   );
 };
