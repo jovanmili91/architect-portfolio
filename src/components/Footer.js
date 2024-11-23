@@ -92,22 +92,22 @@ const Footer = () => {
             <p className="flex items-center text-gray-400 mb-2">
               <FaEnvelope className="mr-2" aria-hidden="true" />{" "}
               <a
-                href="mailto:info@portfolioarhitekta.com"
+                href="mailto:jovanproart@gmail.com"
                 className="hover:underline"
               >
-                info@portfolioarhitekta.com
+                jovanproart@gmail.com
               </a>
             </p>
             <p className="flex items-center text-gray-400 mb-4">
               <FaMapMarkerAlt className="mr-2" aria-hidden="true" /> Ulica
-              Arhitekta 123, Dizajn Grad, SRB 11000
+              Vojvode Mišića 29b, Paraćin, 35250
             </p>
             <div
               className="flex space-x-4"
               aria-label="Linkovi za Društvene Mreže"
             >
               <motion.a
-                href="https://facebook.com/portfolioarhitekta"
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -117,7 +117,7 @@ const Footer = () => {
                 <FaFacebookF />
               </motion.a>
               <motion.a
-                href="https://twitter.com/portfolioarhitekta"
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -127,7 +127,7 @@ const Footer = () => {
                 <FaTwitter />
               </motion.a>
               <motion.a
-                href="https://instagram.com/portfolioarhitekta"
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -137,7 +137,7 @@ const Footer = () => {
                 <FaInstagram />
               </motion.a>
               <motion.a
-                href="https://linkedin.com/company/portfolioarhitekta"
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -159,7 +159,11 @@ const Footer = () => {
             Pretplatite se na naš newsletter kako biste primali najnovije
             informacije i ekskluzivne ponude.
           </p>
-          <form className="flex" action="/subscribe" method="POST">
+          <form
+            className="flex"
+            action="https://<region>-<project>.cloudfunctions.net/subscribe"
+            method="POST"
+          >
             <label htmlFor="newsletter-email" className="sr-only">
               Email Adresa
             </label>

@@ -89,7 +89,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-[rgba(255,255,255,0.50)] backdrop-blur-md shadow-lg z-40 flex flex-col items-center justify-center space-y-4"
+            className="fixed inset-0 bg-[rgba(255,255,255,0.40)] backdrop-blur-md shadow-lg z-40 flex flex-col items-center justify-center space-y-4"
           >
             <Link
               to="/"
