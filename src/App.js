@@ -14,6 +14,7 @@ import About from "./components/About"; // Uvezi About
 import Blog from "./pages/Blog"; // Uvezi Blog
 import BlogDetail from "./pages/BlogDetail"; // Uvezi BlogDetail
 import NotFound from "./components/NotFound";
+import SubscriptionSuccess from "./components/SubscriptionSuccess";
 
 const App = () => {
   return (
@@ -35,6 +36,10 @@ const App = () => {
             {/* Dodaj BlogDetail rutu */}
             <Route path="*" element={<NotFound />} />
             {/* Dodaj ostale rute po potrebi */}
+            <Route
+              path="/subscription-success"
+              component={SubscriptionSuccess}
+            />
           </Routes>
         </div>
         <Footer /> {/* Dodaj Footer ovde */}

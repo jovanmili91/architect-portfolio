@@ -162,7 +162,7 @@ const Footer = () => {
           </p>
           <form
             className="flex"
-            action="https://<region>-<project>.cloudfunctions.net/subscribe"
+            action="https://subscribe-f52ied62eq-uc.a.run.app"
             method="POST"
           >
             <label htmlFor="newsletter-email" className="sr-only">
@@ -188,7 +188,7 @@ const Footer = () => {
 
       {/* Donji Deo Footera sa Strukturiranim Podacima */}
       <div className="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500">
-        &copy; {new Date().getFullYear()} Portfolio Arhitekta. Sva prava
+        &copy; {new Date().getFullYear()} Projekti Kuća Arhitekta. Sva prava
         zadržana.
       </div>
 
