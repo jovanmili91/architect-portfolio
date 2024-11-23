@@ -1,42 +1,41 @@
-const functions = require("firebase-functions/v2");
+// functions/index.js
+const functions = require("firebase-functions");
 const express = require("express");
 const admin = require("firebase-admin");
 const cors = require("cors");
 
+// Initialize Firebase Admin SDK
 admin.initializeApp();
 
 const app = express();
 
-app.use(
-  cors({
-    origin: [
-      "https://projektikuce.rs",
-      "https://architect-portfolio-6f2b3.web.app",
-      "http://localhost:3000",
-    ],
-    methods: ["POST"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
+// Middleware
+app.use(cors({ origin: true })); // Adjust origin as needed
+app.use(express.json()); // To parse JSON bodies
 
-app.post("/", async (req, res) => {
-  const email = req.body.email;
+// Contact Form Submission Endpoint
+app.post("/submitContact", async (req, res) => {
+  const { name, email, message } = req.body;
 
-  if (!email) {
-    return res.status(400).send("Email is required");
+  // Basic Validation
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "All fields are required." });
   }
 
-  const db = admin.firestore();
   try {
-    await db.collection("subscribers").add({
+    // Add to 'contacts' collection with server timestamp
+    await admin.firestore().collection("contacts").add({
+      name,
       email,
-      subscribedAt: admin.firestore.FieldValue.serverTimestamp(),
+      message,
+      submittedAt: admin.firestore.FieldValue.serverTimestamp(),
     });
-    res.status(200).send("Subscription successful!");
+    return res.status(200).json({ message: "Message received!" });
   } catch (error) {
-    console.error("Error saving subscription:", error);
-    res.status(500).send("Internal Server Error");
+    console.error("Error submitting contact form:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-exports.subscribe = functions.https.onRequest(app);
+// Export the Cloud Function
+exports.api = functions.https.onRequest(app);

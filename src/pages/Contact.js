@@ -1,7 +1,5 @@
 // Contact.js
 import React, { useState } from "react";
-import { db } from "../firebaseConfig";
-import { collection, addDoc } from "firebase/firestore";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +10,7 @@ const Contact = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -20,16 +19,35 @@ const Contact = () => {
     }));
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(collection(db, "contacts"), formData);
+      const response = await fetch("https://api-f52ied62eq-uc.a.run.app", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
       setSuccessMessage(
         "Thank you for your message! We will get back to you soon."
       );
       setFormData({ name: "", email: "", message: "" });
+      setErrorMessage("");
     } catch (error) {
-      setErrorMessage("Something went wrong. Please try again.");
+      console.error("Error submitting contact form:", error);
+      setErrorMessage(
+        error.message || "Something went wrong. Please try again."
+      );
+      setSuccessMessage("");
     }
   };
 
@@ -53,6 +71,7 @@ const Contact = () => {
         </div>
       )}
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Name Field */}
         <div>
           <label
             htmlFor="name"
@@ -71,6 +90,7 @@ const Contact = () => {
             className="w-full border border-gray-300 rounded p-3"
           />
         </div>
+        {/* Email Field */}
         <div>
           <label
             htmlFor="email"
@@ -89,6 +109,7 @@ const Contact = () => {
             className="w-full border border-gray-300 rounded p-3"
           />
         </div>
+        {/* Message Field */}
         <div>
           <label
             htmlFor="message"
@@ -107,6 +128,7 @@ const Contact = () => {
             className="w-full border border-gray-300 rounded p-3"
           ></textarea>
         </div>
+        {/* Submit Button */}
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-600 transition-colors duration-300"
