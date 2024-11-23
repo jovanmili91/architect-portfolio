@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="text-3xl font-bold text-blue-500">
+        <Link to="/" className="text-2xl font-bold text-blue-500">
           Projekti Kuća - Portfolio Projekata kuća
         </Link>
         <div className="hidden md:flex space-x-6">
