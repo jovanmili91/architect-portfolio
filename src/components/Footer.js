@@ -1,6 +1,8 @@
 // src/components/Footer.js
 
 import React from "react";
+import { Link } from "react-router-dom";
+
 import {
   FaFacebookF,
   FaTwitter,
@@ -8,7 +10,7 @@ import {
   FaLinkedinIn,
   FaEnvelope,
   FaPhoneAlt,
-  FaMapMarkerAlt, // Added for address icon
+  FaMapMarkerAlt, // Dodato za ikonu adrese
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -16,94 +18,96 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
-        {/* About Us Section */}
+        {/* Sekcija O Nama */}
         <section aria-labelledby="footer-about">
           <h3 id="footer-about" className="text-xl font-semibold mb-4">
-            About Us
+            O Nama
           </h3>
           <p className="text-gray-400">
-            At Architect Portfolio, we specialize in creating innovative
-            architectural designs that blend aesthetics with functionality. Our
-            experienced team of architects is dedicated to delivering
-            sustainable and modern structures tailored to your unique vision.
+            U Portfolio Arhitekta, specijalizovani smo za kreiranje inovativnih
+            arhitektonskih dizajna koji kombinuju estetiku sa funkcionalnošću.
+            Naš iskusni tim arhitekata posvećen je pružanju održivih i modernih
+            struktura prilagođenih vašoj jedinstvenoj viziji.
           </p>
         </section>
 
-        {/* Quick Links Section */}
+        {/* Sekcija Brzi Linkovi */}
         <nav aria-labelledby="footer-navigation">
           <h3 id="footer-navigation" className="text-xl font-semibold mb-4">
-            Quick Links
+            Brzi Linkovi
           </h3>
           <ul className="space-y-2">
             <li>
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
-                Home
-              </a>
+                Početna
+              </Link>
             </li>
             <li>
-              <a
-                href="/about"
+              <Link
+                to="/o-nama"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
-                About
-              </a>
+                O Nama
+              </Link>
             </li>
             <li>
-              <a
-                href="/blog"
+              <Link
+                to="/blog"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 Blog
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/projects"
+              <Link
+                to="/projekti-kuce"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
-                Projects
-              </a>
+                Projekti Kuća
+              </Link>
             </li>
             <li>
-              <a
-                href="/contact"
+              <Link
+                to="/kontakt"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
-                Contact
-              </a>
+                Kontakt
+              </Link>
             </li>
           </ul>
         </nav>
 
-        {/* Contact Information Section */}
+        {/* Sekcija Kontakt Informacije */}
         <section aria-labelledby="footer-contact">
           <h3 id="footer-contact" className="text-xl font-semibold mb-4">
-            Contact Us
+            Kontaktirajte Nas
           </h3>
           <address className="not-italic">
             <p className="flex items-center text-gray-400 mb-2">
-              <FaPhoneAlt className="mr-2" aria-hidden="true" /> +1 (234)
-              567-890
+              <FaPhoneAlt className="mr-2" aria-hidden="true" /> +381 62 277 686
             </p>
             <p className="flex items-center text-gray-400 mb-2">
               <FaEnvelope className="mr-2" aria-hidden="true" />{" "}
               <a
-                href="mailto:info@architectportfolio.com"
+                href="mailto:info@portfolioarhitekta.com"
                 className="hover:underline"
               >
-                info@architectportfolio.com
+                info@portfolioarhitekta.com
               </a>
             </p>
             <p className="flex items-center text-gray-400 mb-4">
-              <FaMapMarkerAlt className="mr-2" aria-hidden="true" /> 1234
-              Architecture Lane, Design City, DC 56789
+              <FaMapMarkerAlt className="mr-2" aria-hidden="true" /> Ulica
+              Arhitekta 123, Dizajn Grad, SRB 11000
             </p>
-            <div className="flex space-x-4" aria-label="Social Media Links">
+            <div
+              className="flex space-x-4"
+              aria-label="Linkovi za Društvene Mreže"
+            >
               <motion.a
-                href="https://facebook.com/architectportfolio"
+                href="https://facebook.com/portfolioarhitekta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -113,7 +117,7 @@ const Footer = () => {
                 <FaFacebookF />
               </motion.a>
               <motion.a
-                href="https://twitter.com/architectportfolio"
+                href="https://twitter.com/portfolioarhitekta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -123,7 +127,7 @@ const Footer = () => {
                 <FaTwitter />
               </motion.a>
               <motion.a
-                href="https://instagram.com/architectportfolio"
+                href="https://instagram.com/portfolioarhitekta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -133,7 +137,7 @@ const Footer = () => {
                 <FaInstagram />
               </motion.a>
               <motion.a
-                href="https://linkedin.com/company/architectportfolio"
+                href="https://linkedin.com/company/portfolioarhitekta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -146,24 +150,24 @@ const Footer = () => {
           </address>
         </section>
 
-        {/* Newsletter Subscription Section */}
+        {/* Sekcija Pretplate na Newsletter */}
         <section aria-labelledby="footer-newsletter">
           <h3 id="footer-newsletter" className="text-xl font-semibold mb-4">
             Newsletter
           </h3>
           <p className="text-gray-400 mb-4">
-            Subscribe to our newsletter to receive the latest updates and
-            exclusive offers.
+            Pretplatite se na naš newsletter kako biste primali najnovije
+            informacije i ekskluzivne ponude.
           </p>
           <form className="flex" action="/subscribe" method="POST">
             <label htmlFor="newsletter-email" className="sr-only">
-              Email Address
+              Email Adresa
             </label>
             <input
               type="email"
               id="newsletter-email"
               name="email"
-              placeholder="Your email"
+              placeholder="Vaš email"
               required
               className="px-4 py-2 rounded-l-md bg-gray-700 text-white focus:outline-none"
             />
@@ -171,43 +175,43 @@ const Footer = () => {
               type="submit"
               className="px-4 py-2 bg-blue-600 rounded-r-md hover:bg-blue-700 transition-colors duration-300"
             >
-              Subscribe
+              Pretplati se
             </button>
           </form>
         </section>
       </div>
 
-      {/* Footer Bottom with Structured Data */}
+      {/* Donji Deo Footera sa Strukturiranim Podacima */}
       <div className="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500">
-        &copy; {new Date().getFullYear()} Architect Portfolio. All rights
-        reserved.
+        &copy; {new Date().getFullYear()} Portfolio Arhitekta. Sva prava
+        zadržana.
       </div>
 
-      {/* Structured Data for SEO */}
+      {/* Strukturirani Podaci za SEO */}
       <script type="application/ld+json">
         {`
           {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Architect Portfolio",
-            "image": "https://www.architectportfolio.com/logo.png",
+            "name": "Portfolio Arhitekta",
+            "image": "https://www.portfolioarhitekta.com/logo.png",
             "@id": "",
-            "url": "https://www.architectportfolio.com",
-            "telephone": "+1-234-567-890",
-            "email": "info@architectportfolio.com",
+            "url": "https://www.portfolioarhitekta.com",
+            "telephone": "+381-62-277-686",
+            "email": "info@portfolioarhitekta.com",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "1234 Architecture Lane",
-              "addressLocality": "Design City",
-              "addressRegion": "DC",
-              "postalCode": "56789",
-              "addressCountry": "US"
+              "streetAddress": "Ulica Arhitekta 123",
+              "addressLocality": "Dizajn Grad",
+              "addressRegion": "SRB",
+              "postalCode": "11000",
+              "addressCountry": "RS"
             },
             "sameAs": [
-              "https://www.facebook.com/architectportfolio",
-              "https://www.twitter.com/architectportfolio",
-              "https://www.instagram.com/architectportfolio",
-              "https://www.linkedin.com/company/architectportfolio"
+              "https://www.facebook.com/portfolioarhitekta",
+              "https://www.twitter.com/portfolioarhitekta",
+              "https://www.instagram.com/portfolioarhitekta",
+              "https://www.linkedin.com/company/portfolioarhitekta"
             ]
           }
         `}

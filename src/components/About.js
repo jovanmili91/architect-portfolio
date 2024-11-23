@@ -12,22 +12,24 @@ const About = () => {
   return (
     <div className="bg-gray-50 py-16">
       <Helmet>
-        <title>About Us | Architect Portfolio</title>
+        <title>O Nama | Projekat Kuće i Projekti Kuća</title>
         <meta
           name="description"
-          content="Learn more about [Your Company Name], our mission, vision, and the dedicated team behind our innovative architectural designs."
+          content="Saznajte više o našem timu, misiji i viziji. Istražite kako kreiramo projekte kuća i projekte arhitektonskih rešenja koji inspirišu i traju."
         />
-        <meta property="og:title" content="About Us | Architect Portfolio" />
+        <meta
+          property="og:title"
+          content="O Nama | Projekat Kuće i Projekti Kuća"
+        />
         <meta
           property="og:description"
-          content="Discover our journey, mission, and the talented team that makes our architectural projects exceptional."
+          content="Upoznajte našu priču, misiju i tim koji stoji iza inovativnih arhitektonskih rešenja i projekata kuća."
         />
         <meta property="og:image" content={parallaxImage} />
         <meta property="og:type" content="website" />
-        {/* Add more meta tags as needed */}
       </Helmet>
 
-      {/* Header Section */}
+      {/* Sekcija Naslova */}
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2
           className="text-4xl font-extrabold text-gray-800 text-center mb-6"
@@ -35,7 +37,7 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          About Us
+          O Nama
         </motion.h2>
         <motion.p
           className="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12"
@@ -43,16 +45,15 @@ const About = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
         >
-          At [Your Company Name], we are dedicated to transforming spaces
-          through innovative design and sustainable practices. Our team of
-          experienced architects and designers work collaboratively to bring
-          your vision to life.
+          U našoj kompaniji posvećeni smo transformaciji prostora kroz
+          inovativni dizajn i održive prakse. Naš tim iskusnih arhitekata i
+          dizajnera radi zajedno kako bi ostvario vašu viziju.
         </motion.p>
       </div>
 
-      {/* Content Section */}
+      {/* Glavna Sekcija */}
       <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-        {/* Image */}
+        {/* Slika */}
         <motion.div
           className="w-full"
           initial={{ opacity: 0, x: -100 }}
@@ -62,13 +63,13 @@ const About = () => {
         >
           <img
             src={aboutImage}
-            alt="About Us"
+            alt="O Nama"
             className="w-full h-80 sm:h-96 md:h-full object-cover rounded-lg shadow-lg"
             loading="lazy"
           />
         </motion.div>
 
-        {/* Text Content */}
+        {/* Tekst */}
         <motion.div
           className="space-y-6"
           initial={{ opacity: 0, x: 100 }}
@@ -76,23 +77,24 @@ const About = () => {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-semibold text-gray-800">Our Mission</h3>
+          <h3 className="text-2xl font-semibold text-gray-800">Naša Misija</h3>
           <p className="text-gray-600">
-            To deliver exceptional architectural solutions that not only meet
-            our clients' needs but also inspire and endure. We believe in
-            creating spaces that are both functional and aesthetically pleasing,
-            ensuring longevity and sustainability.
+            Naša misija je da pružimo izuzetna arhitektonska rešenja koja ne
+            samo da ispunjavaju potrebe klijenata već i inspirišu i traju.
+            Kreiramo prostore koji su funkcionalni i estetski privlačni, uz
+            dugoročnu održivost.
           </p>
 
-          <h3 className="text-2xl font-semibold text-gray-800">Our Vision</h3>
+          <h3 className="text-2xl font-semibold text-gray-800">Naša Vizija</h3>
           <p className="text-gray-600">
-            To be a leading architecture firm recognized for innovative designs,
-            sustainability, and excellence in client service. We aim to shape
-            the skylines of tomorrow with creativity and integrity.
+            Naša vizija je da budemo vodeća arhitektonska kompanija prepoznata
+            po inovativnom dizajnu, održivosti i izvrsnosti u radu sa
+            klijentima. Oblikujemo horizonte budućnosti sa kreativnošću i
+            integritetom.
           </p>
 
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {/* Feature 1 */}
+            {/* Karakteristika 1 */}
             <motion.div
               className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md"
               whileHover={{
@@ -103,15 +105,15 @@ const About = () => {
             >
               <FaLightbulb className="text-blue-500 text-4xl mb-4" />
               <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                Innovative Design
+                Inovativni Dizajn
               </h4>
               <p className="text-gray-600">
-                Pioneering creative solutions that blend functionality with
-                aesthetics.
+                Kreiramo kreativna rešenja koja kombinuju funkcionalnost i
+                estetiku.
               </p>
             </motion.div>
 
-            {/* Feature 2 */}
+            {/* Karakteristika 2 */}
             <motion.div
               className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md"
               whileHover={{
@@ -122,14 +124,14 @@ const About = () => {
             >
               <FaUsers className="text-blue-500 text-4xl mb-4" />
               <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                Collaborative Team
+                Tim za Saradnju
               </h4>
               <p className="text-gray-600">
-                A diverse team working together to achieve exceptional results.
+                Raznovrstan tim koji zajedno ostvaruje izvanredne rezultate.
               </p>
             </motion.div>
 
-            {/* Feature 3 */}
+            {/* Karakteristika 3 */}
             <motion.div
               className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md"
               whileHover={{
@@ -140,29 +142,28 @@ const About = () => {
             >
               <FaAward className="text-blue-500 text-4xl mb-4" />
               <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                Award-Winning
+                Nagrađivani Rad
               </h4>
               <p className="text-gray-600">
-                Recognized for excellence in design and sustainability
-                practices.
+                Prepoznati smo po izvrsnosti u dizajnu i održivim praksama.
               </p>
             </motion.div>
           </div>
         </motion.div>
       </div>
 
-      {/* Parallax Section */}
+      {/* Parallax Sekcija */}
       <Parallax bgImage={parallaxImage} strength={500}>
         <div style={{ height: 400 }}>
           <div className="flex items-center justify-center h-full bg-black bg-opacity-50">
             <h2 className="text-5xl font-bold text-white text-center px-4">
-              Our Commitment to Excellence
+              Posvećeni Izvrsnosti
             </h2>
           </div>
         </div>
       </Parallax>
 
-      {/* Video Introduction Section */}
+      {/* Video Sekcija */}
       <section className="py-16 bg-gray-100">
         <div className="max-w-6xl mx-auto px-4">
           <motion.h3
@@ -171,19 +172,19 @@ const About = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
           >
-            Our Journey
+            Naše Putovanje
           </motion.h3>
           <motion.div
             className="w-full rounded-lg shadow-lg overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
-            style={{ height: "600px" }} // Set a taller fixed height
+            style={{ height: "600px" }}
           >
             <iframe
               className="w-full h-full"
               src="https://www.youtube.com/embed/38vK64FNbBI?vq=hd1080"
-              title="Our Journey"
+              title="Naše Putovanje"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -192,7 +193,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Sekcija Tima */}
       <div className="max-w-7xl mx-auto px-4 mt-16">
         <motion.h3
           className="text-3xl font-bold text-gray-800 text-center mb-8"
@@ -200,10 +201,10 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          Meet Our Team
+          Upoznajte Naš Tim
         </motion.h3>
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Team Member 1 */}
+          {/* Član Tima 1 */}
           <motion.div
             className="bg-white rounded-lg shadow-md overflow-hidden"
             whileHover={{
@@ -214,23 +215,23 @@ const About = () => {
           >
             <img
               src="https://via.placeholder.com/400x300"
-              alt="Alice Johnson"
+              alt="Ana Petrović"
               className="w-full h-56 object-cover"
               loading="lazy"
             />
             <div className="p-6">
               <h4 className="text-xl font-semibold text-gray-800">
-                Alice Johnson
+                Ana Petrović
               </h4>
-              <p className="text-gray-600">Chief Architect</p>
+              <p className="text-gray-600">Glavni Arhitekta</p>
               <p className="mt-4 text-gray-600">
-                Alice leads our design team with over 15 years of experience in
-                creating sustainable and innovative architectural solutions.
+                Ana vodi naš tim dizajnera sa preko 15 godina iskustva u
+                stvaranju održivih i inovativnih arhitektonskih rešenja.
               </p>
             </div>
           </motion.div>
 
-          {/* Team Member 2 */}
+          {/* Član Tima 2 */}
           <motion.div
             className="bg-white rounded-lg shadow-md overflow-hidden"
             whileHover={{
@@ -241,23 +242,23 @@ const About = () => {
           >
             <img
               src="https://via.placeholder.com/400x300"
-              alt="Michael Smith"
+              alt="Marko Jovanović"
               className="w-full h-56 object-cover"
               loading="lazy"
             />
             <div className="p-6">
               <h4 className="text-xl font-semibold text-gray-800">
-                Michael Smith
+                Marko Jovanović
               </h4>
-              <p className="text-gray-600">Senior Designer</p>
+              <p className="text-gray-600">Senior Dizajner</p>
               <p className="mt-4 text-gray-600">
-                Michael specializes in modern design aesthetics, ensuring each
-                project is both functional and visually stunning.
+                Marko je specijalizovan za moderne dizajne, obezbeđujući
+                funkcionalnost i vizuelnu privlačnost svakog projekta.
               </p>
             </div>
           </motion.div>
 
-          {/* Team Member 3 */}
+          {/* Član Tima 3 */}
           <motion.div
             className="bg-white rounded-lg shadow-md overflow-hidden"
             whileHover={{
@@ -268,18 +269,18 @@ const About = () => {
           >
             <img
               src="https://via.placeholder.com/400x300"
-              alt="Sophia Lee"
+              alt="Jelena Nikolić"
               className="w-full h-56 object-cover"
               loading="lazy"
             />
             <div className="p-6">
               <h4 className="text-xl font-semibold text-gray-800">
-                Sophia Lee
+                Jelena Nikolić
               </h4>
-              <p className="text-gray-600">Project Manager</p>
+              <p className="text-gray-600">Menadžer Projekta</p>
               <p className="mt-4 text-gray-600">
-                Sophia ensures that all projects are delivered on time and
-                within budget, maintaining the highest standards of quality.
+                Jelena osigurava da svi projekti budu završeni na vreme i u
+                skladu sa najvišim standardima kvaliteta.
               </p>
             </div>
           </motion.div>

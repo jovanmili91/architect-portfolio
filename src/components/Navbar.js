@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Close the menu when the window is resized to desktop
+  // Zatvoriti meni kada se prozor promeni veličinu na desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768 && isOpen) {
@@ -22,17 +22,17 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full bg-white shadow z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/" className="text-3xl font-bold text-blue-500">
-          ArchitectPortfolio
+          Projekti Kuća - Portfolio Projekata kuća
         </Link>
         <div className="hidden md:flex space-x-6">
           <Link to="/" className="text-lg text-gray-700 hover:text-blue-500">
-            Home
+            Početna
           </Link>
           <Link
-            to="/projects"
+            to="/projekti-kuce"
             className="text-lg text-gray-700 hover:text-blue-500"
           >
-            Projects
+            Projekti Kuća
           </Link>
           <Link
             to="/blog"
@@ -41,22 +41,22 @@ const Navbar = () => {
             Blog
           </Link>
           <Link
-            to="/about"
+            to="/o-nama"
             className="text-lg text-gray-700 hover:text-blue-500"
           >
-            About
+            O Nama
           </Link>
           <Link
-            to="/contact"
+            to="/kontakt"
             className="text-lg text-gray-700 hover:text-blue-500"
           >
-            Contact
+            Kontakt
           </Link>
         </div>
         <button
-          className="md:hidden text-gray-700 focus:outline-none z-60" // Now z-60 is defined
+          className="md:hidden text-gray-700 focus:outline-none z-60" // Sada je z-60 definisano
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? "Close menu" : "Open menu"} // Accessibility label
+          aria-label={isOpen ? "Zatvori meni" : "Otvori meni"} // Labela za pristupačnost
         >
           <svg
             className="w-6 h-6"
@@ -95,14 +95,14 @@ const Navbar = () => {
               className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
               onClick={() => setIsOpen(false)}
             >
-              Home
+              Početna
             </Link>
             <Link
-              to="/projects"
+              to="/projekti-kuce"
               className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
               onClick={() => setIsOpen(false)}
             >
-              Projects
+              Projekti Kuća
             </Link>
             <Link
               to="/blog"
@@ -112,18 +112,18 @@ const Navbar = () => {
               Blog
             </Link>
             <Link
-              to="/about"
+              to="/o-nama"
               className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
               onClick={() => setIsOpen(false)}
             >
-              About
+              O Nama
             </Link>
             <Link
-              to="/contact"
+              to="/kontakt"
               className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 w-full text-center"
               onClick={() => setIsOpen(false)}
             >
-              Contact
+              Kontakt
             </Link>
           </motion.div>
         )}

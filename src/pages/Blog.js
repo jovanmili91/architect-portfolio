@@ -29,7 +29,7 @@ const Blog = () => {
 
         setPosts(postsList);
       } catch (err) {
-        console.error("Error fetching blog posts:", err);
+        console.error("Greška pri učitavanju blog postova:", err);
         setError(true);
       } finally {
         setLoading(false);
@@ -42,20 +42,20 @@ const Blog = () => {
   return (
     <div>
       <Helmet>
-        <title>Blog | Architect Portfolio</title>
+        <title>Blog | Projekti Kuća i Projekat Kuće</title>
         <meta
           name="description"
-          content="Read the latest articles and insights from our architecture team."
+          content="Pročitajte najnovije članke i uvide našeg tima o projektima kuća i arhitektonskim rešenjima."
         />
       </Helmet>
 
-      {/* Header Section */}
+      {/* Sekcija Naslova */}
       <section className="relative bg-gray-800 text-white py-20">
         {windowWidth >= 640 && (
           <div className="absolute inset-0">
             <img
-              src="/assets/blog-header.jpg" // Ensure you have this image in your public/assets folder
-              alt="Blog Header"
+              src="/assets/blog-header.jpg" // Uverite se da imate ovu sliku u public/assets folderu
+              alt="Naslov Bloga"
               className="w-full h-full object-cover opacity-50"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-transparent"></div>
@@ -68,7 +68,7 @@ const Blog = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            Our Blog
+            Naš Blog
           </motion.h1>
           <motion.p
             className="text-base sm:text-lg md:text-2xl mb-8"
@@ -76,19 +76,22 @@ const Blog = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            Insights, Stories, and Updates from Our Architectural Team
+            Uvidi, priče i novosti iz sveta projekata kuća i arhitekture
           </motion.p>
         </div>
       </section>
 
-      {/* Blog Posts Section */}
+      {/* Sekcija Blog Postova */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           {loading ? (
-            <p className="text-center text-gray-500">Loading blog posts...</p>
+            <p className="text-center text-gray-500">
+              Učitavanje blog postova...
+            </p>
           ) : error ? (
             <p className="text-center text-red-500">
-              Failed to load blog posts. Please try again later.
+              Neuspešno učitavanje blog postova. Molimo pokušajte ponovo
+              kasnije.
             </p>
           ) : (
             <>
@@ -110,7 +113,7 @@ const Blog = () => {
                         />
                       ) : (
                         <div className="w-full h-48 bg-gray-300 flex items-center justify-center">
-                          <p className="text-gray-600">No image available</p>
+                          <p className="text-gray-600">Slika nije dostupna</p>
                         </div>
                       )}
                       <div className="p-6">
@@ -119,7 +122,7 @@ const Blog = () => {
                         </h3>
                         <p className="text-gray-600 mb-4">{post.excerpt}</p>
                         <span className="text-blue-500 font-semibold">
-                          Read More →
+                          Pročitajte više →
                         </span>
                       </div>
                     </Link>
@@ -127,8 +130,8 @@ const Blog = () => {
                 ))}
               </div>
 
-              {/* Optional: Pagination or Load More Button */}
-              {/* Add pagination here if you have many posts */}
+              {/* Opcionalno: Paginacija ili Dugme za Učitavanje Više */}
+              {/* Dodajte paginaciju ako imate mnogo postova */}
             </>
           )}
         </div>

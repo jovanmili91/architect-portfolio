@@ -1,11 +1,12 @@
+// ProjectDetail.js
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { FaArrowLeft } from "react-icons/fa"; // For a better back icon
-import parse from "html-react-parser"; // Import the parse function
+import { FaArrowLeft } from "react-icons/fa"; // Za bolji ikonu za povratak
+import parse from "html-react-parser"; // Import funkcije parse
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -24,21 +25,21 @@ const ProjectDetail = () => {
           const data = docSnap.data();
           setProject({
             id: docSnap.id,
-            title: data.title?.trim() || "No Title",
-            description: data.description || "No Description",
+            title: data.title?.trim() || "Bez Naslova",
+            description: data.description || "Bez Opisa",
             imageURL: data.imageURL || "",
-            location: data.location || "Unknown",
-            architect: data.architect || "Not Specified",
-            yearBuilt: data.yearBuilt || "Not Provided",
-            category: data.category || "General",
-            // Add more fields as needed
+            location: data.location || "Nepoznato",
+            architect: data.architect || "Nije navedeno",
+            yearBuilt: data.yearBuilt || "Nije navedeno",
+            category: data.category || "Opšte",
+            // Dodajte više polja po potrebi
           });
         } else {
-          setError("Project not found.");
+          setError("Projekat nije pronađen.");
         }
       } catch (err) {
         console.error(err);
-        setError("Failed to load project. Please try again later.");
+        setError("Nije moguće učitati projekat. Molimo pokušajte kasnije.");
       } finally {
         setLoading(false);
       }
@@ -49,7 +50,7 @@ const ProjectDetail = () => {
 
   if (loading) {
     return (
-      <p className="text-center text-gray-500 mt-10">Loading project...</p>
+      <p className="text-center text-gray-500 mt-10">Učitavanje projekta...</p>
     );
   }
 
@@ -60,7 +61,7 @@ const ProjectDetail = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <Helmet>
-        <title>{project.title} | Your Portfolio</title>
+        <title>{project.title} | Portfolio Arhitekta</title>
         <meta name="description" content={project.description} />
         <meta property="og:title" content={project.title} />
         <meta property="og:description" content={project.description} />
@@ -72,29 +73,29 @@ const ProjectDetail = () => {
         <meta property="og:url" content={window.location.href} />
         <meta
           name="keywords"
-          content={`architecture, ${project.title}, ${project.category}, ${project.location}`}
+          content={`arhitektura, ${project.title}, ${project.category}, ${project.location}`}
         />
-        <meta name="author" content="Your Portfolio" />
-        {/* Add more meta tags as necessary */}
+        <meta name="author" content="Portfolio Arhitekta" />
+        {/* Dodajte više meta tagova po potrebi */}
       </Helmet>
       <div className="container mx-auto px-4 py-12">
-        {/* Back button */}
+        {/* Dugme za povratak */}
         <button
           onClick={() => navigate(-1)}
           className="mb-6 text-blue-500 hover:text-blue-600 hover:underline flex items-center transition-colors duration-200"
         >
           <FaArrowLeft className="mr-2" />
-          Back to Projects
+          Povratak na Projekte
         </button>
 
-        {/* Content Container */}
+        {/* Sadržaj Kontejnera */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="bg-white shadow-lg rounded-lg overflow-hidden"
         >
-          {/* Project Image */}
+          {/* Slika Projekta */}
           {project.imageURL ? (
             <div className="w-full">
               <img
@@ -105,47 +106,49 @@ const ProjectDetail = () => {
             </div>
           ) : (
             <div className="w-full h-64 sm:h-80 md:h-96 flex items-center justify-center bg-gray-200">
-              <span className="text-gray-500">No Image Available</span>
+              <span className="text-gray-500">Slika nije dostupna</span>
             </div>
           )}
 
-          {/* Project Details */}
+          {/* Detalji Projekta */}
           <div className="p-8">
             <h1 className="text-4xl font-bold text-gray-800 mb-4">
               {project.title}
             </h1>
 
-            {/* Parsed Description */}
+            {/* Parsirani Opis */}
             <div className="prose prose-lg text-gray-700 leading-relaxed">
               {parse(project.description)}
             </div>
 
-            {/* Additional Information */}
+            {/* Dodatne Informacije */}
             <div className="mt-8 space-y-4">
-              <h2 className="text-2xl font-semibold text-gray-800">Details</h2>
+              <h2 className="text-2xl font-semibold text-gray-800">Detalji</h2>
               <ul className="space-y-2 text-gray-600">
                 <li>
-                  <strong>Location:</strong> {project.location}
+                  <strong>Lokacija:</strong> {project.location}
                 </li>
                 <li>
-                  <strong>Architect:</strong> {project.architect}
+                  <strong>Arhitekta:</strong> {project.architect}
                 </li>
                 <li>
-                  <strong>Year Built:</strong> {project.yearBuilt}
+                  <strong>Godina Izgradnje:</strong> {project.yearBuilt}
                 </li>
                 <li>
-                  <strong>Category:</strong> {project.category}
+                  <strong>Kategorija:</strong> {project.category}
                 </li>
               </ul>
             </div>
 
-            {/* Call to Action */}
+            {/* Poziv na Akciju */}
             <div className="mt-8">
               <button
-                onClick={() => alert("Contact Us for More Info! 062 277 686")}
+                onClick={() =>
+                  alert("Kontaktirajte nas za više informacija! 062 277 686")
+                }
                 className="bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400"
               >
-                Contact Us
+                Kontaktirajte Nas
               </button>
             </div>
           </div>

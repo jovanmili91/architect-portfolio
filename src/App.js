@@ -3,41 +3,42 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer"; // Import Footer
-import BackToTop from "./components/BackToTop"; // Import BackToTop
-import ScrollToTop from "./components/ScrollToTop"; // Import ScrollToTop
+import Footer from "./components/Footer"; // Uvezi Footer
+import BackToTop from "./components/BackToTop"; // Uvezi BackToTop
+import ScrollToTop from "./components/ScrollToTop"; // Uvezi ScrollToTop
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import ProjectDetail from "./pages/ProjectDetail"; // Import ProjectDetail
+import ProjectDetail from "./pages/ProjectDetail"; // Uvezi ProjectDetail
 import Contact from "./pages/Contact";
-import About from "./components/About"; // Import About
-import Blog from "./pages/Blog"; // Import Blog
-import BlogDetail from "./pages/BlogDetail"; // Import BlogDetail
+import About from "./components/About"; // Uvezi About
+import Blog from "./pages/Blog"; // Uvezi Blog
+import BlogDetail from "./pages/BlogDetail"; // Uvezi BlogDetail
 import NotFound from "./components/NotFound";
 
 const App = () => {
   return (
     <Router>
-      <ScrollToTop /> {/* Add ScrollToTop here */}
+      <ScrollToTop /> {/* Dodaj ScrollToTop ovde */}
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <div className="flex-grow pt-16">
-          {/* To prevent content being hidden behind navbar */}
+          {/* Da se spreči sakrivanje sadržaja iza navigacije */}
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} /> {/* Add About Route */}
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/:id" element={<ProjectDetail />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/blog" element={<Blog />} /> {/* Add Blog Route */}
+            <Route path="/o-nama" element={<About />} />{" "}
+            {/* Dodaj About rutu */}
+            <Route path="/projekti-kuce" element={<Projects />} />
+            <Route path="/projekti-kuce/:id" element={<ProjectDetail />} />
+            <Route path="/kontakt" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} /> {/* Dodaj Blog rutu */}
             <Route path="/blog/:id" element={<BlogDetail />} />{" "}
-            {/* Add BlogDetail Route */}
+            {/* Dodaj BlogDetail rutu */}
             <Route path="*" element={<NotFound />} />
-            {/* Add other routes as needed */}
+            {/* Dodaj ostale rute po potrebi */}
           </Routes>
         </div>
-        <Footer /> {/* Add Footer here */}
-        <BackToTop /> {/* Add BackToTop here */}
+        <Footer /> {/* Dodaj Footer ovde */}
+        <BackToTop /> {/* Dodaj BackToTop ovde */}
       </div>
     </Router>
   );

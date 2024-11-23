@@ -20,15 +20,15 @@ const Projects = () => {
           const data = doc.data();
           return {
             id: doc.id,
-            title: data.title?.trim() || "No Title",
-            description: data.description || "No Description",
+            title: data.title?.trim() || "Bez Naslova",
+            description: data.description || "Bez Opisa",
             imageURL: data.imageURL || "",
           };
         });
         setProjects(projectList);
       } catch (err) {
         console.error(err);
-        setError("Failed to load projects. Please try again later.");
+        setError("Nije moguće učitati projekte. Molimo pokušajte kasnije.");
       } finally {
         setLoading(false);
       }
@@ -38,12 +38,12 @@ const Projects = () => {
   }, []);
 
   const handleProjectClick = (id) => {
-    navigate(`/projects/${id}`);
+    navigate(`/projekti-kuce/${id}`);
   };
 
   if (loading) {
     return (
-      <p className="text-center text-gray-500 mt-10">Loading projects...</p>
+      <p className="text-center text-gray-500 mt-10">Učitavanje projekata...</p>
     );
   }
 
@@ -54,12 +54,16 @@ const Projects = () => {
   return (
     <div>
       <Helmet>
-        <title>Projects</title>
-        {/* Add other meta tags as needed */}
+        <title>Projekti Kuća</title>
+        <meta
+          name="description"
+          content="Pregledajte naše projekte kuća. Inovativni dizajni i održiva rešenja za vaš dom."
+        />
+        {/* Dodajte druge meta tagove po potrebi */}
       </Helmet>
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-2xl sm:text-4xl font-bold text-center mb-8">
-          Our Projects
+          Naši Projekti Kuća
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {projects.map((project) => (
@@ -85,7 +89,7 @@ const Projects = () => {
                   className="w-full h-56 sm:h-48 bg-gray-300 flex items-center justify-center cursor-pointer"
                   onClick={() => handleProjectClick(project.id)}
                 >
-                  <p className="text-gray-600">No image available</p>
+                  <p className="text-gray-600">Slika nije dostupna</p>
                 </div>
               )}
               <div className="p-6">
@@ -99,7 +103,7 @@ const Projects = () => {
                   className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300"
                   onClick={() => handleProjectClick(project.id)}
                 >
-                  Learn More
+                  Saznajte Više
                 </button>
               </div>
             </motion.div>

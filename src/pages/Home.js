@@ -34,16 +34,18 @@ const Home = () => {
           const data = doc.data();
           return {
             id: doc.id,
-            title: data.title?.trim() || "No Title",
-            description: data.description || "No Description",
+            title: data.title?.trim() || "Bez Naslova",
+            description: data.description || "Bez Opisa",
             imageURL: data.imageURL || "",
           };
         });
 
         setLatestProjects(projectsList);
       } catch (err) {
-        console.error("Error fetching projects:", err);
-        setError("Failed to load latest projects. Please try again later.");
+        console.error("Greška pri učitavanju projekata:", err);
+        setError(
+          "Nije moguće učitati najnovije projekte. Molimo pokušajte kasnije."
+        );
       } finally {
         setLoading(false);
       }
@@ -53,21 +55,25 @@ const Home = () => {
   }, []);
 
   const handleProjectClick = (id) => {
-    navigate(`/projects/${id}`);
+    navigate(`/projekti-kuce/${id}`);
   };
 
   return (
     <div>
       <Helmet>
-        <title>Architect Portfolio</title>
-        {/* Add other meta tags as needed */}
+        <title>Projekti Kuća i Projekat Kuće</title>
+        <meta
+          name="description"
+          content="Portfolio arhitekta sa najnovijim projektima kuća i projekat kuće. Otkrijte inovativne dizajne i održiva rešenja za vaš dom."
+        />
+        {/* Dodajte druge meta tagove po potrebi */}
       </Helmet>
-      {/* Hero Section */}
+      {/* Hero Sekcija */}
       <section className="relative bg-gray-800 text-white py-20">
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
-            alt="Architectural design"
+            alt="Arhitektonski dizajn"
             className="w-full h-full object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-transparent"></div>
@@ -79,7 +85,7 @@ const Home = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            Welcome to Architect Portfolio
+            Dobrodošli na naš katalog Projekata Kuća
           </motion.h1>
           <motion.p
             className="text-base sm:text-lg md:text-2xl mb-8"
@@ -87,28 +93,29 @@ const Home = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            Showcasing the finest architectural designs and innovative projects.
+            Prikazujemo najfinije arhitektonske dizajne i inovativne projekte
+            kuća.
           </motion.p>
           <motion.a
-            href="/projects"
+            href="/projekti-kuce"
             className="inline-block bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-600 transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
           >
-            Explore Our Projects
+            Istražite Naše Projekte
           </motion.a>
         </div>
       </section>
 
-      {/* Portfolio Preview Section */}
+      {/* Sekcija Pregleda Portfolio */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-12">
-            Our Portfolio
+            Naš Portfolio
           </h2>
 
           {loading ? (
             <p className="text-center text-gray-500">
-              Loading latest projects...
+              Učitavanje najnovijih projekata...
             </p>
           ) : error ? (
             <p className="text-center text-red-500">{error}</p>
@@ -131,7 +138,7 @@ const Home = () => {
                     />
                   ) : (
                     <div className="w-full h-64 sm:h-48 md:h-64 bg-gray-300 flex items-center justify-center">
-                      <p className="text-gray-600">No image available</p>
+                      <p className="text-gray-600">Nema dostupne slike</p>
                     </div>
                   )}
                   <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
@@ -147,18 +154,18 @@ const Home = () => {
           {!loading && !error && (
             <div className="text-center mt-12">
               <motion.a
-                href="/projects"
+                href="/projekti-kuce"
                 className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-600 transition-colors duration-300"
                 whileHover={{ scale: 1.05 }}
               >
-                View All Projects
+                Vidi Sve Projekte
               </motion.a>
             </div>
           )}
         </div>
       </section>
 
-      {/* Parallax Section */}
+      {/* Parallax Sekcija */}
       {windowWidth >= 640 ? (
         <Parallax bgImage={parallaxImage} strength={500}>
           <section className="h-96 flex items-center justify-center">
@@ -168,24 +175,27 @@ const Home = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
             >
-              Crafting Spaces with Precision and Passion
+              Kreiramo Prostore sa Preciznošću i Strašću
             </motion.h2>
           </section>
         </Parallax>
       ) : (
-        <section className="h-64 flex items-center justify-center bg-gray-800">
+        <section
+          className="h-64 flex items-center justify-center bg-gray-800 bg-cover bg-center"
+          style={{ backgroundImage: `url(${parallaxImage})` }} // Statična pozadinska slika
+        >
           <motion.h2
-            className="text-2xl sm:text-4xl text-white font-bold px-4 py-2 rounded"
+            className="text-1xl sm:text-1xl text-white font-bold bg-black bg-opacity-50 px-4 py-2 rounded"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
           >
-            Crafting Spaces with Precision and Passion
+            Kreiramo Prostore sa Preciznošću i Strašću
           </motion.h2>
         </section>
       )}
 
-      {/* Introduction Section */}
+      {/* Uvodna Sekcija */}
       <section className="py-16 bg-gray-100">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center">
           <motion.div
@@ -197,7 +207,7 @@ const Home = () => {
           >
             <img
               src={heroImage}
-              alt="Our Work"
+              alt="Naš Rad"
               className="w-full rounded-lg shadow-lg"
             />
           </motion.div>
@@ -209,78 +219,79 @@ const Home = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
-              About Our Work
+              O Našem Radu
             </h2>
             <p className="text-gray-600 leading-relaxed mb-6">
-              With years of experience and a team of skilled architects, we
-              bring visionary concepts to life. From residential spaces to
-              commercial landmarks, we strive to deliver excellence in every
-              project.
+              Sa godinama iskustva i timom veštih arhitekata, pretvaramo
+              vizionarske koncepte u stvarnost. Od stambenih prostora do
+              komercijalnih znamenitosti, težimo ka izvrsnosti u svakom projektu
+              kuće.
             </p>
             <motion.a
-              href="/about"
+              href="/o-nama"
               className="text-blue-500 font-semibold hover:underline"
               whileHover={{ color: "#2563EB" }}
             >
-              Learn More About Us
+              Saznajte Više o Nama
             </motion.a>
           </motion.div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Sekcija Karakteristika */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-12">
-            Our Services
+            Naše Usluge
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             <FeatureCard
               Icon={FaProjectDiagram}
-              title="Innovative Design"
-              description="Creating cutting-edge designs that blend functionality with aesthetics."
+              title="Inovativni Dizajn"
+              description="Kreiranje najsavremenijih dizajna koji kombinuju funkcionalnost sa estetikom."
             />
             <FeatureCard
               Icon={FaHandshake}
-              title="Client Collaboration"
-              description="Working closely with clients to ensure their vision is realized."
+              title="Saradnja sa Klijentima"
+              description="Bliska saradnja sa klijentima kako bismo osigurali da se njihova vizija ostvari."
             />
             <FeatureCard
               Icon={FaLeaf}
-              title="Sustainable Solutions"
-              description="Implementing eco-friendly practices for a greener future."
+              title="Održiva Rešenja"
+              description="Implementacija ekološki prihvatljivih praksi za zeleniju budućnost."
             />
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* Poziv na Akciju */}
       <section className="bg-blue-500 text-white py-12">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-            Ready to Start Your Project?
+            Spremni da Počnete Vaš Projekat?
           </h2>
           <p className="mb-6">
-            Let us help you turn your architectural vision into reality.
+            Dozvolite nam da vam pomognemo da vašu arhitektonsku viziju
+            pretvorite u stvarnost.
           </p>
           <motion.a
-            href="/contact"
+            href="/kontakt"
             className="bg-white text-blue-500 py-3 px-6 rounded font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
             whileHover={{ scale: 1.05 }}
           >
-            Contact Us Today
+            Kontaktirajte Nas Danas
           </motion.a>
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Sekcija Svedočenja */}
       <section className="py-16 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-12">
-            What Our Clients Say
+            Šta Naši Klijenti Kažu
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {/* Testimonial 1 */}
+            {/* Svedočenje 1 */}
             <motion.div
               className="bg-white p-6 rounded-lg shadow-md"
               initial={{ boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" }}
@@ -291,15 +302,15 @@ const Home = () => {
               transition={{ duration: 0.3 }}
             >
               <p className="text-gray-700 mb-4">
-                "Their attention to detail and innovative designs transformed
-                our workspace into something truly remarkable."
+                "Njihova pažnja prema detaljima i inovativni dizajni
+                transformisali su naš radni prostor u nešto zaista izvanredno."
               </p>
               <h4 className="text-lg font-semibold text-gray-800">
-                - Jane Doe
+                - Jovana Petrović
               </h4>
             </motion.div>
 
-            {/* Testimonial 2 */}
+            {/* Svedočenje 2 */}
             <motion.div
               className="bg-white p-6 rounded-lg shadow-md"
               initial={{ boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" }}
@@ -310,15 +321,15 @@ const Home = () => {
               transition={{ duration: 0.3 }}
             >
               <p className="text-gray-700 mb-4">
-                "Professional and creative team! They brought our vision to life
-                seamlessly."
+                "Profesionalan i kreativan tim! Bez problema su ostvarili našu
+                viziju."
               </p>
               <h4 className="text-lg font-semibold text-gray-800">
-                - John Smith
+                - Marko Jovanović
               </h4>
             </motion.div>
 
-            {/* Testimonial 3 */}
+            {/* Svedočenje 3 */}
             <motion.div
               className="bg-white p-6 rounded-lg shadow-md"
               initial={{ boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" }}
@@ -329,11 +340,11 @@ const Home = () => {
               transition={{ duration: 0.3 }}
             >
               <p className="text-gray-700 mb-4">
-                "Exceptional service and outstanding results. Highly recommend
-                their architectural expertise."
+                "Izuzetna usluga i odlični rezultati. Toplo preporučujem njihovu
+                arhitektonsku stručnost."
               </p>
               <h4 className="text-lg font-semibold text-gray-800">
-                - Emily Johnson
+                - Ana Nikolić
               </h4>
             </motion.div>
           </div>
