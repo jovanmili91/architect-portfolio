@@ -8,7 +8,7 @@ import { db } from "../firebaseConfig";
 import { collection, query, limit, getDocs } from "firebase/firestore";
 import heroImage from "../assets/hero-image.jpg";
 import parallaxImage from "../assets/parallax-image.jpg";
-import FeatureCard from "./FeatureCard";
+import FeatureCard from "../components/FeatureCard";
 import { useNavigate } from "react-router-dom";
 import { useWindowWidth } from "@react-hook/window-size";
 
@@ -24,8 +24,9 @@ const Home = () => {
       try {
         const projectsRef = collection(db, "projects");
         const q = query(projectsRef, limit(3));
-        const querySnapshot = await getDocs(q);
 
+        const querySnapshot = await getDocs(q);
+        console.log("Q", querySnapshot);
         console.log("Query Snapshot:", querySnapshot.size);
 
         const projectsList = querySnapshot.docs.map((doc) => {
@@ -63,7 +64,7 @@ const Home = () => {
       </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gray-800 text-white py-20">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
             alt="Architectural design"

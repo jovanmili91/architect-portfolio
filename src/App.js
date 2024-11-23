@@ -6,11 +6,13 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer"; // Import Footer
 import BackToTop from "./components/BackToTop"; // Import BackToTop
 import ScrollToTop from "./components/ScrollToTop"; // Import ScrollToTop
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail"; // Import ProjectDetail
 import Contact from "./pages/Contact";
 import About from "./components/About"; // Import About
+import Blog from "./pages/Blog"; // Import Blog
+import BlogDetail from "./pages/BlogDetail"; // Import BlogDetail
 import NotFound from "./components/NotFound";
 
 const App = () => {
@@ -27,6 +29,9 @@ const App = () => {
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} /> {/* Add Blog Route */}
+            <Route path="/blog/:id" element={<BlogDetail />} />{" "}
+            {/* Add BlogDetail Route */}
             <Route path="*" element={<NotFound />} />
             {/* Add other routes as needed */}
           </Routes>

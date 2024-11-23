@@ -5,6 +5,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { FaArrowLeft } from "react-icons/fa"; // For a better back icon
+import parse from "html-react-parser"; // Import the parse function
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -113,9 +114,11 @@ const ProjectDetail = () => {
             <h1 className="text-4xl font-bold text-gray-800 mb-4">
               {project.title}
             </h1>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              {project.description}
-            </p>
+
+            {/* Parsed Description */}
+            <div className="prose prose-lg text-gray-700 leading-relaxed">
+              {parse(project.description)}
+            </div>
 
             {/* Additional Information */}
             <div className="mt-8 space-y-4">
