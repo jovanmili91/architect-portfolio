@@ -30,9 +30,11 @@ const Footer = () => {
       );
 
       if (response.ok) {
-        navigate("/subscription-success"); // Redirect using useNavigate
+        alert("Subscription successful!");
+        navigate("/subscription-success");
       } else {
-        console.error("Subscription failed");
+        const errorData = await response.text();
+        console.error("Subscription failed:", errorData);
         alert("Failed to subscribe. Please try again.");
       }
     } catch (error) {
