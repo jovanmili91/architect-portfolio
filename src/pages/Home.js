@@ -85,7 +85,7 @@ const Home = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            Dobrodošli na naš katalog Projekata Kuća
+            Dobrodošli na naš katalog Projekata Kuća !!!!
           </motion.h1>
           <motion.p
             className="text-base sm:text-lg md:text-2xl mb-8"
