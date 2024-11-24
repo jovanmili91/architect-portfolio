@@ -9,6 +9,10 @@ admin.initializeApp();
 
 const app = express();
 
+// Verify reCAPTCHA Token
+const secretKey = "6LdGhYgqAAAAAOt2SnqzhCYq-lsT0D1Bjdoy1_yh"; // Replace with your actual secret key
+const verificationURL = `https://www.google.com/recaptcha/api/siteverify`;
+
 // Middleware
 app.use(cors({ origin: true })); // Adjust origin as needed
 app.use(express.json()); // To parse JSON bodies
@@ -21,10 +25,6 @@ app.post("/submitContact", async (req, res) => {
   if (!name || !email || !message || !recaptchaToken) {
     return res.status(400).json({ error: "All fields are required." });
   }
-
-  // Verify reCAPTCHA Token
-  const secretKey = "6LdGhYgqAAAAAOt2SnqzhCYq-lsT0D1Bjdoy1_yh"; // Replace with your actual secret key
-  const verificationURL = `https://www.google.com/recaptcha/api/siteverify`;
 
   try {
     const recaptchaResponse = await axios.post(verificationURL, null, {
@@ -45,6 +45,42 @@ app.post("/submitContact", async (req, res) => {
       name,
       email,
       message,
+      submittedAt: admin.firestore.FieldValue.serverTimestamp(),
+    });
+
+    return res.status(200).json({ message: "Message received!" });
+  } catch (error) {
+    console.error("Error submitting contact form:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Subscribe Form Submission Endpoint
+app.post("/submitSubscribe", async (req, res) => {
+  const { email, recaptchaToken } = req.body;
+
+  // Basic Validation
+  if (!email || !recaptchaToken) {
+    return res.status(400).json({ error: "All fields are required." });
+  }
+
+  try {
+    const recaptchaResponse = await axios.post(verificationURL, null, {
+      params: {
+        secret: secretKey,
+        response: recaptchaToken,
+      },
+    });
+
+    const recaptchaData = recaptchaResponse.data;
+
+    if (!recaptchaData.success || recaptchaData.score < 0.5) {
+      return res.status(400).json({ error: "reCAPTCHA verification failed." });
+    }
+
+    // Add to 'contacts' collection with server timestamp
+    await admin.firestore().collection("subscribers").add({
+      email,
       submittedAt: admin.firestore.FieldValue.serverTimestamp(),
     });
 

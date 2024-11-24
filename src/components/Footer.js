@@ -13,19 +13,42 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState(""); // Add state for controlled input
+  const [formData, setFormData] = useState({
+    email: "",
+  });
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
+      const token = await window.grecaptcha.execute(
+        "6LdGhYgqAAAAAPc1qC3EjOoyKuzjcIyNIEqnOrBi",
+        { action: "submit" }
+      );
+
+      // Add the reCAPTCHA token to the form data
+      const formDataWithCaptcha = {
+        ...formData,
+        recaptchaToken: token,
+      };
+
       const response = await fetch(
-        "https://subscribe-f52ied62eq-uc.a.run.app",
+        "https://api-f52ied62eq-uc.a.run.app/submitSubscribe",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify(formDataWithCaptcha),
         }
       );
 
@@ -198,8 +221,8 @@ const Footer = () => {
               name="email"
               placeholder="Vaš email"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)} // Controlled input
+              value={formData.email}
+              onChange={handleChange} // Controlled input
               className="px-4 py-2 rounded-l-md bg-gray-700 text-white focus:outline-none"
             />
             <button
