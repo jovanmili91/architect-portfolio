@@ -1,4 +1,3 @@
-// Navbar.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -27,6 +26,7 @@ const Navbar = () => {
           </span>
         </Link>
         <div className="hidden md:flex space-x-6">
+          {/* Navigation Links */}
           <Link to="/" className="text-lg text-gray-700 hover:text-blue-500">
             Početna
           </Link>
@@ -56,7 +56,7 @@ const Navbar = () => {
           </Link>
         </div>
         <button
-          className="md:hidden text-gray-700 focus:outline-none z-50"
+          className="md:hidden text-gray-700 focus:outline-none z-50 ml-auto"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Zatvori meni" : "Otvori meni"}
         >

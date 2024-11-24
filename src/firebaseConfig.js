@@ -7,13 +7,13 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 // Your Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDzn9F_gBCVAKY7YqPSkBdMghT2BfYoiMo",
-  authDomain: "architect-portfolio-6f2b3.firebaseapp.com",
-  projectId: "architect-portfolio-6f2b3",
-  storageBucket: "architect-portfolio-6f2b3.appspot.com",
-  messagingSenderId: "59382744078",
-  appId: "1:59382744078:web:4e5e74a81745eb53b9285f",
-  measurementId: "G-773HV01LTC",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase App
@@ -26,7 +26,7 @@ const analytics = getAnalytics(app);
 
 // Initialize App Check with reCAPTCHA v3
 const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider("6LdGhYgqAAAAAPc1qC3EjOoyKuzjcIyNIEqnOrBi"), // Replace with your site key
+  provider: new ReCaptchaV3Provider(process.env.REACT_APP_RECAPTCHA_SITE_KEY),
   isTokenAutoRefreshEnabled: true, // Enable token auto-refresh
 });
 

@@ -9,8 +9,8 @@ admin.initializeApp();
 
 const app = express();
 
-// Verify reCAPTCHA Token
-const secretKey = "6LdGhYgqAAAAAOt2SnqzhCYq-lsT0D1Bjdoy1_yh"; // Replace with your actual secret key
+// Retrieve the reCAPTCHA secret key from environment variables
+const secretKey = functions.config().recaptcha.secret;
 const verificationURL = `https://www.google.com/recaptcha/api/siteverify`;
 
 // Middleware
@@ -78,7 +78,7 @@ app.post("/submitSubscribe", async (req, res) => {
       return res.status(400).json({ error: "reCAPTCHA verification failed." });
     }
 
-    // Add to 'contacts' collection with server timestamp
+    // Add to 'subscribers' collection with server timestamp
     await admin.firestore().collection("subscribers").add({
       email,
       submittedAt: admin.firestore.FieldValue.serverTimestamp(),

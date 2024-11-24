@@ -93,7 +93,7 @@ const Home = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            Prikazujemo najfinije arhitektonske dizajne i inovativne projekte
+            Prikazujemo elegantne arhitektonske dizajne i inovativne projekte
             kuća.
           </motion.p>
           <motion.a

@@ -31,7 +31,7 @@ const Footer = () => {
 
     try {
       const token = await window.grecaptcha.execute(
-        "6LdGhYgqAAAAAPc1qC3EjOoyKuzjcIyNIEqnOrBi",
+        process.env.REACT_APP_RECAPTCHA_SITE_KEY,
         { action: "submit" }
       );
 
@@ -211,7 +211,7 @@ const Footer = () => {
             Pretplatite se na naš newsletter kako biste primali najnovije
             informacije i ekskluzivne ponude.
           </p>
-          <div className="flex">
+          <form className="flex" onSubmit={handleSubmit}>
             <label htmlFor="newsletter-email" className="sr-only">
               Email Adresa
             </label>
@@ -220,19 +220,18 @@ const Footer = () => {
               id="newsletter-email"
               name="email"
               placeholder="Vaš email"
-              required
               value={formData.email}
               onChange={handleChange} // Controlled input
+              required
               className="px-4 py-2 rounded-l-md bg-gray-700 text-white focus:outline-none"
             />
             <button
-              type="button" // Change type to "button"
-              onClick={handleSubmit} // Attach event handler here
+              type="submit"
               className="px-4 py-2 bg-blue-600 rounded-r-md hover:bg-blue-700 transition-colors duration-300"
             >
               Pretplati se
             </button>
-          </div>
+          </form>
         </section>
       </div>
 
