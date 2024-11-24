@@ -54,7 +54,7 @@ const BlogDetail = () => {
             to="/blog"
             className="text-blue-500 hover:underline font-semibold"
           >
-            Back to Blog
+            Nazad na Blog
           </Link>
         </div>
       </div>
@@ -80,6 +80,7 @@ const BlogDetail = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-transparent"></div>
           </div>
         )}
+
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
           <motion.h1
             className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-6"
@@ -103,7 +104,14 @@ const BlogDetail = () => {
       {/* Blog Content */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="mb-6">
+          <Link
+            to="/blog"
+            className="text-blue-500 hover:underline font-semibold"
+          >
+            ← Nazad na Blog
+          </Link>
+
+          <div className="mb-6 my-4">
             <span className="text-gray-500 text-sm">
               By {post.author || "Unknown Author"} on{" "}
               {post.createdAt
@@ -129,7 +137,7 @@ const BlogDetail = () => {
               to="/blog"
               className="text-blue-500 hover:underline font-semibold"
             >
-              ← Back to Blog
+              ← Nazad na Blog
             </Link>
           </div>
         </div>

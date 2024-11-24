@@ -7,6 +7,8 @@ import { Parallax } from "react-parallax";
 import aboutImage from "../assets/about-image.jpg";
 import parallaxImage from "../assets/parallax-image.jpg";
 import { Helmet } from "react-helmet-async";
+import profilSlika1 from "../assets/profilsSika1.jpg";
+import profilSlika2 from "../assets/profilSlika2.jpg";
 
 const About = () => {
   return (
@@ -214,18 +216,18 @@ const About = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src="https://via.placeholder.com/400x300"
-              alt="Ana Petrović"
+              src={profilSlika1}
+              alt="Jovan Milivojević"
               className="w-full h-56 object-cover"
               loading="lazy"
             />
             <div className="p-6">
               <h4 className="text-xl font-semibold text-gray-800">
-                Ana Petrović
+                Jovan Milivojević
               </h4>
-              <p className="text-gray-600">Glavni Arhitekta</p>
+              <p className="text-gray-600">Arhitekta</p>
               <p className="mt-4 text-gray-600">
-                Ana vodi naš tim dizajnera sa preko 15 godina iskustva u
+                Jovan vodi naš tim dizajnera sa preko 10 godina iskustva u
                 stvaranju održivih i inovativnih arhitektonskih rešenja.
               </p>
             </div>
@@ -241,18 +243,18 @@ const About = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src="https://via.placeholder.com/400x300"
-              alt="Marko Jovanović"
+              src={profilSlika2}
+              alt="Branko Milivojević"
               className="w-full h-56 object-cover"
               loading="lazy"
             />
             <div className="p-6">
               <h4 className="text-xl font-semibold text-gray-800">
-                Marko Jovanović
+                Branko Milivojević
               </h4>
-              <p className="text-gray-600">Senior Dizajner</p>
+              <p className="text-gray-600">Arhitekta</p>
               <p className="mt-4 text-gray-600">
-                Marko je specijalizovan za moderne dizajne, obezbeđujući
+                Branko je specijalizovan za moderne dizajne, obezbeđujući
                 funkcionalnost i vizuelnu privlačnost svakog projekta.
               </p>
             </div>
@@ -269,17 +271,17 @@ const About = () => {
           >
             <img
               src="https://via.placeholder.com/400x300"
-              alt="Jelena Nikolić"
+              alt="Boban Milivojević"
               className="w-full h-56 object-cover"
               loading="lazy"
             />
             <div className="p-6">
               <h4 className="text-xl font-semibold text-gray-800">
-                Jelena Nikolić
+                Boban Milivojević
               </h4>
-              <p className="text-gray-600">Menadžer Projekta</p>
+              <p className="text-gray-600">Arhitekta</p>
               <p className="mt-4 text-gray-600">
-                Jelena osigurava da svi projekti budu završeni na vreme i u
+                Boban osigurava da svi projekti budu završeni na vreme i u
                 skladu sa najvišim standardima kvaliteta.
               </p>
             </div>

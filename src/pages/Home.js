@@ -86,7 +86,7 @@ const Home = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            Dobrodošli na naš katalog Projekata Kuća
+            Dobrodošli na naš portfolio Projekata Kuća
           </motion.h1>
           <motion.p
             className="text-base sm:text-lg md:text-2xl mb-8"
@@ -372,7 +372,7 @@ const Home = () => {
                 viziju."
               </p>
               <h4 className="text-lg font-semibold text-gray-800">
-                - Marko Jovanović
+                - Ivan Petrović
               </h4>
             </motion.div>
 
@@ -391,7 +391,7 @@ const Home = () => {
                 arhitektonsku stručnost."
               </p>
               <h4 className="text-lg font-semibold text-gray-800">
-                - Ana Nikolić
+                - Lazar Marković
               </h4>
             </motion.div>
           </div>

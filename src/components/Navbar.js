@@ -25,8 +25,8 @@ const Navbar = () => {
           className="flex items-center space-x-2 text-2xl font-bold text-blue-500"
         >
           <img src={logo} className="w-20 h-auto" alt="Logo" />
-          <span className="block md:hidden">Projekti Kuća</span>
-          <span className="hidden md:block">Projekti Kuća</span>
+          <span className="block md:hidden text-lg">PROJEKTI KUĆA</span>
+          <span className="hidden md:block">PROJEKTI KUĆA</span>
         </Link>
 
         <div className="hidden md:flex space-x-6">
