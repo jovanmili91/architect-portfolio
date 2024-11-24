@@ -23,7 +23,7 @@ app.post("/submitContact", async (req, res) => {
   }
 
   // Verify reCAPTCHA Token
-  const secretKey = "YOUR_SECRET_KEY"; // Replace with your actual secret key
+  const secretKey = "6LdGhYgqAAAAAOt2SnqzhCYq-lsT0D1Bjdoy1_yh"; // Replace with your actual secret key
   const verificationURL = `https://www.google.com/recaptcha/api/siteverify`;
 
   try {
