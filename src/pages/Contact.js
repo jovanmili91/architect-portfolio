@@ -1,4 +1,5 @@
 // Contact.js
+
 import React, { useState } from "react";
 
 const Contact = () => {
@@ -22,14 +23,35 @@ const Contact = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!window.grecaptcha) {
+      setErrorMessage("reCAPTCHA not loaded. Please try again later.");
+      return;
+    }
+
     try {
-      const response = await fetch("https://api-f52ied62eq-uc.a.run.app", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const token = await window.grecaptcha.execute(
+        "6LdGhYgqAAAAAPc1qC3EjOoyKuzjcIyNIEqnOrBi",
+        { action: "submit" }
+      );
+
+      // Add the reCAPTCHA token to the form data
+      const formDataWithCaptcha = {
+        ...formData,
+        recaptchaToken: token,
+      };
+
+      // Send the form data to your server
+      const response = await fetch(
+        "https://api-f52ied62eq-uc.a.run.app/submitContact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formDataWithCaptcha),
+        }
+      );
 
       const data = await response.json();
 
