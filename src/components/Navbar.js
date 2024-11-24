@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,12 +20,15 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-blue-500">
+        <Link
+          to="/"
+          className="flex items-center space-x-2 text-2xl font-bold text-blue-500"
+        >
+          <img src={logo} className="w-20 h-auto" alt="Logo" />
           <span className="block md:hidden">Projekti Kuća</span>
-          <span className="hidden md:block">
-            Projekti Kuća - Portfolio Projekata kuća
-          </span>
+          <span className="hidden md:block">Projekti Kuća</span>
         </Link>
+
         <div className="hidden md:flex space-x-6">
           {/* Navigation Links */}
           <Link to="/" className="text-lg text-gray-700 hover:text-blue-500">

@@ -81,7 +81,7 @@ const ProjectDetail = () => {
       <div className="container mx-auto px-4 py-12">
         {/* Dugme za povratak */}
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/projekti-kuce")}
           className="mb-6 text-blue-500 hover:text-blue-600 hover:underline flex items-center transition-colors duration-200"
         >
           <FaArrowLeft className="mr-2" />
