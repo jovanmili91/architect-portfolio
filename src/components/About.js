@@ -1,14 +1,18 @@
 // src/components/About.js
 
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import { FaUsers, FaLightbulb, FaAward } from "react-icons/fa";
 import { Parallax } from "react-parallax";
-import aboutImage from "../assets/about-image.jpg";
-import parallaxImage from "../assets/parallax-image.jpg";
+import aboutImage from "../assets/optimized/about-image.webp";
+import parallaxImage from "../assets/optimized/parallax-image.webp";
 import { Helmet } from "react-helmet-async";
-import profilSlika1 from "../assets/profilsSika1.jpg";
-import profilSlika2 from "../assets/profilSlika2.jpg";
+import profilSlika1 from "../assets/optimized/profilsSika1.webp";
+import profilSlika2 from "../assets/optimized/profilSlika2.webp";
+import timSaradnika from "../assets/optimized/tim-saradnika.webp";
+
+// const TeamSection = lazy(() => import("./TeamSection"));
+// const VideoSection = lazy(() => import("./VideoSection"));
 
 const About = () => {
   return (
@@ -155,10 +159,10 @@ const About = () => {
       </div>
 
       {/* Parallax Sekcija */}
-      <Parallax bgImage={parallaxImage} strength={500}>
-        <div style={{ height: 400 }}>
-          <div className="flex items-center justify-center h-full bg-black bg-opacity-50">
-            <h2 className="text-5xl font-bold text-white text-center px-4">
+      <Parallax bgImage={parallaxImage} strength={300}>
+        <div style={{ height: 300 }}>
+          <div className="flex items-center justify-center h-full bg-black bg-opacity-50 ">
+            <h2 className="text-4xl font-bold text-white text-center px-4">
               Posvećeni Izvrsnosti
             </h2>
           </div>
@@ -270,18 +274,18 @@ const About = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src="https://via.placeholder.com/400x300"
-              alt="Boban Milivojević"
+              src={timSaradnika}
+              alt="Tim Saradnika Na projektima kuća"
               className="w-full h-56 object-cover"
               loading="lazy"
             />
             <div className="p-6">
               <h4 className="text-xl font-semibold text-gray-800">
-                Boban Milivojević
+                Tim Saradnika
               </h4>
               <p className="text-gray-600">Arhitekta</p>
               <p className="mt-4 text-gray-600">
-                Boban osigurava da svi projekti budu završeni na vreme i u
+                Naš tim osigurava da svi projekti budu završeni na vreme i u
                 skladu sa najvišim standardima kvaliteta.
               </p>
             </div>
