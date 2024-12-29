@@ -226,13 +226,11 @@ const About = () => {
               loading="lazy"
             />
             <div className="p-6">
-              <h4 className="text-xl font-semibold text-gray-800">
-                Jovan Milivojević
-              </h4>
+              <h4 className="text-xl font-semibold text-gray-800">Vladimir</h4>
               <p className="text-gray-600">Arhitekta</p>
               <p className="mt-4 text-gray-600">
-                Jovan vodi naš tim dizajnera sa preko 10 godina iskustva u
-                stvaranju održivih i inovativnih arhitektonskih rešenja.
+                Jovan je dizajner sa preko 10 godina iskustva u stvaranju
+                održivih i inovativnih arhitektonskih rešenja.
               </p>
             </div>
           </motion.div>

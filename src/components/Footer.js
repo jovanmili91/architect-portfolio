@@ -144,15 +144,15 @@ const Footer = () => {
             <p className="flex items-center text-gray-400 mb-2">
               <FaEnvelope className="mr-2" aria-hidden="true" />{" "}
               <a
-                href="mailto:jovanproart@gmail.com"
+                href="mailto:projektovanjekuce@gmail.com"
                 className="hover:underline"
               >
-                jovanproart@gmail.com
+                projektovanjekuce@gmail.com
               </a>
             </p>
             <p className="flex items-center text-gray-400 mb-4">
               <FaMapMarkerAlt className="mr-2" aria-hidden="true" /> Ulica
-              Vojvode Mišića 29b, Paraćin, 35250
+              Vojvode Mišića 33/A, Paraćin
             </p>
             <div
               className="flex space-x-4"
